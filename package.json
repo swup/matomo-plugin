@@ -9,15 +9,15 @@
     "prepublish": "npm run compile && npm run build"
   },
   "author": {
-    "name": "Georgy Marchuk",
-    "email": "gmarcuk@gmail.com",
-    "url": "https://gmrchk.com/"
-  },
-  "contributors": {
     "name": "Jens Draser-Schieb",
     "email": "jens@berlinersueden.de",
     "url": "https://berlinersueden.de/"
   },
+  "contributors": [{
+    "name": "Georgy Marchuk",
+    "email": "gmarcuk@gmail.com",
+    "url": "https://gmrchk.com/"
+  }],
   "license": "MIT",
   "repository": {
     "type": "git",
