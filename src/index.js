@@ -4,7 +4,7 @@ export default class SwupMatomoPlugin extends Plugin {
 	name = 'SwupMatomoPlugin';
 
 	mount() {
-		this.swup.on('contentReplaced', event => {
+		this.swup.on('contentReplaced', (event) => {
 			if (typeof window._paq !== 'undefined') {
 				let title = document.title;
 				let url = window.location.pathname + window.location.search;
@@ -17,6 +17,6 @@ export default class SwupMatomoPlugin extends Plugin {
 			} else {
 				console.warn('Matomo is not loaded.');
 			}
-		})
+		});
 	}
 }

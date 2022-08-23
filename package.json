@@ -4,6 +4,7 @@
   "description": "Swup Matomo plugin.",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "prettier src/**/*.{js,mjs} --write",
     "compile": "babel --presets es2015,stage-0 -d lib/ src/",
     "build": "webpack-cli",
     "prepublish": "npm run compile && npm run build"
@@ -37,5 +38,6 @@
   },
   "dependencies": {
     "@swup/plugin": "^1.0.1"
-  }
+  },
+  "prettier": "@swup/prettier-config"
 }
