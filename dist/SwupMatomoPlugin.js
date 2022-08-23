@@ -134,6 +134,10 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+/**
+ * Class representing the Swup Matomo Plugin.
+ * @extends Plugin
+ */
 var SwupMatomoPlugin = function (_Plugin) {
 	_inherits(SwupMatomoPlugin, _Plugin);
 
@@ -148,28 +152,60 @@ var SwupMatomoPlugin = function (_Plugin) {
 			args[_key] = arguments[_key];
 		}
 
-		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SwupMatomoPlugin.__proto__ || Object.getPrototypeOf(SwupMatomoPlugin)).call.apply(_ref, [this].concat(args))), _this), _this.name = 'SwupMatomoPlugin', _temp), _possibleConstructorReturn(_this, _ret);
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SwupMatomoPlugin.__proto__ || Object.getPrototypeOf(SwupMatomoPlugin)).call.apply(_ref, [this].concat(args))), _this), _this.name = 'SwupMatomoPlugin', _this.onContentReplaced = function (popstate) {
+			_this.maybePushPageView();
+		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
 	_createClass(SwupMatomoPlugin, [{
 		key: 'mount',
+
+
+		/**
+   * Add event handlers on mount
+   */
 		value: function mount() {
-			var _this2 = this;
+			this.swup.on('contentReplaced', this.onContentReplaced);
+		}
 
-			this.swup.on('contentReplaced', function (event) {
-				if (typeof window._paq !== 'undefined') {
-					var title = document.title;
-					var url = window.location.pathname + window.location.search;
+		/**
+   * Remove event handlers on mount
+   */
 
-					_paq.push(['setDocumentTitle', title]);
-					_paq.push(['setCustomUrl', url]);
-					_paq.push(['trackPageView']);
+	}, {
+		key: 'unmount',
+		value: function unmount() {
+			this.swup.off('contentReplaced', this.onContentReplaced);
+		}
 
-					_this2.swup.log('Matomo pageview (url \'' + url + '\').');
-				} else {
-					console.warn('Matomo is not loaded.');
-				}
-			});
+		/**
+   * Handles 'contentReplaced'
+   * @param {(boolean|PopStateEvent)} popstate
+   * @returns {void}
+   */
+
+	}, {
+		key: 'maybePushPageView',
+
+
+		/**
+   * Tracks a page view to matomo, if it is installed
+   */
+		value: function maybePushPageView() {
+			// Guard clause to detect if matomo is available
+			if (window._paq == null) {
+				this.swup.log('[@swup/matomo-plugin] 🚨 Matomo is not loaded');
+				return;
+			}
+
+			var title = document.title;
+			var url = window.location.pathname + window.location.search;
+
+			_paq.push(['setDocumentTitle', title]);
+			_paq.push(['setCustomUrl', url]);
+			_paq.push(['trackPageView']);
+
+			this.swup.log('[@swup/matomo-plugin] \u2705 PageView tracked for \'' + url + '\'');
 		}
 	}]);
 
