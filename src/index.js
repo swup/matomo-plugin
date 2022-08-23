@@ -15,7 +15,7 @@ export default class SwupMatomoPlugin extends Plugin {
 	}
 
 	/**
-	 * Remove event handlers on mount
+	 * Remove event handlers on unmount
 	 */
 	unmount() {
 		this.swup.off('contentReplaced', this.onContentReplaced);
