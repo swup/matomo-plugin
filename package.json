@@ -14,11 +14,18 @@
     "email": "jens@berlinersueden.de",
     "url": "https://berlinersueden.de/"
   },
-  "contributors": [{
-    "name": "Georgy Marchuk",
-    "email": "gmarcuk@gmail.com",
-    "url": "https://gmrchk.com/"
-  }],
+  "contributors": [
+    {
+      "name": "Georgy Marchuk",
+      "email": "gmarcuk@gmail.com",
+      "url": "https://gmrchk.com/"
+    },
+    {
+      "name": "Rasso Hilber",
+      "email": "mail@rassohilber.com",
+      "url": "https://rassohilber.com/"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
