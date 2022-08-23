@@ -153,7 +153,7 @@ var SwupMatomoPlugin = function (_Plugin) {
 		}
 
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = SwupMatomoPlugin.__proto__ || Object.getPrototypeOf(SwupMatomoPlugin)).call.apply(_ref, [this].concat(args))), _this), _this.name = 'SwupMatomoPlugin', _this.onContentReplaced = function (popstate) {
-			_this.maybePushPageView();
+			_this.maybeTrackPageView();
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -185,13 +185,13 @@ var SwupMatomoPlugin = function (_Plugin) {
    */
 
 	}, {
-		key: 'maybePushPageView',
+		key: 'maybeTrackPageView',
 
 
 		/**
    * Tracks a page view to matomo, if it is installed
    */
-		value: function maybePushPageView() {
+		value: function maybeTrackPageView() {
 			// Guard clause to detect if matomo is available
 			if (window._paq == null) {
 				this.swup.log('[@swup/matomo-plugin] 🚨 Matomo is not loaded');
