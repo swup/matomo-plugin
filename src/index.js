@@ -27,13 +27,13 @@ export default class SwupMatomoPlugin extends Plugin {
 	 * @returns {void}
 	 */
 	onContentReplaced = (popstate) => {
-		this.maybeTrackPageView();
+		this.trackPageView();
 	};
 
 	/**
 	 * Tracks a page view to matomo, if it is installed
 	 */
-	maybeTrackPageView() {
+	trackPageView() {
 		// Guard clause to detect if matomo is available
 		if (window._paq == null) {
 			this.swup.log('[@swup/matomo-plugin] 🚨 Matomo is not loaded');
