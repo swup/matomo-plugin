@@ -1,6 +1,6 @@
 {
   "name": "@swup/matomo-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Swup Matomo plugin.",
   "main": "lib/index.js",
   "scripts": {
