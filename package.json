@@ -1,9 +1,10 @@
 {
   "name": "@swup/matomo-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Swup Matomo plugin.",
   "main": "lib/index.js",
   "scripts": {
+    "lint": "prettier src/**/*.{js,mjs} --write",
     "compile": "babel --presets es2015,stage-0 -d lib/ src/",
     "build": "webpack-cli",
     "prepublish": "npm run compile && npm run build"
@@ -13,11 +14,18 @@
     "email": "jens@berlinersueden.de",
     "url": "https://berlinersueden.de/"
   },
-  "contributors": [{
-    "name": "Georgy Marchuk",
-    "email": "gmarcuk@gmail.com",
-    "url": "https://gmrchk.com/"
-  }],
+  "contributors": [
+    {
+      "name": "Georgy Marchuk",
+      "email": "gmarcuk@gmail.com",
+      "url": "https://gmrchk.com/"
+    },
+    {
+      "name": "Rasso Hilber",
+      "email": "mail@rassohilber.com",
+      "url": "https://rassohilber.com/"
+    }
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -37,5 +45,6 @@
   },
   "dependencies": {
     "@swup/plugin": "^1.0.1"
-  }
+  },
+  "prettier": "@swup/prettier-config"
 }
