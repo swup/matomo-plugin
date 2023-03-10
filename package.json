@@ -42,9 +42,7 @@
     "url": "https://github.com/swup/matomo-plugin.git"
   },
   "dependencies": {
-    "@swup/plugin": "^2.0.0",
-    "focus-options-polyfill": "^1.5.0",
-    "on-demand-live-region": "^0.1.3"
+    "@swup/plugin": "^2.0.0"
   },
   "peerDependencies": {
     "swup": "^3.0.0"
