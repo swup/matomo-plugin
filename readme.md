@@ -1,5 +1,5 @@
 # Swup Matomo Plugin
-**by [jdraserschieb](https://github.com/jdraserschieb)**  
+**by [jdraserschieb](https://github.com/jdraserschieb)**
 
 Matomo plugin triggers pageview event on `contentReplaced` (on each page change).
 Note that this event is not triggered at the first load, so the first page view must be triggered elsewhere.
@@ -14,22 +14,19 @@ _paq.push(['trackPageView']);
 
 ## Installation
 
-This plugin can be installed with npm
+Install the plugin from npm and import it into your bundle.
 
 ```bash
 npm install @swup/matomo-plugin
 ```
-
-and included with import
-
-```javascript
+```js
 import SwupMatomoPlugin from '@swup/matomo-plugin';
 ```
 
-or included from the dist folder
+Or include the minified production file from a CDN:
 
 ```html
-<script src="./dist/SwupMatomoPlugin.js"></script>
+<script src="https://unpkg.com/@swup/matomo-plugin@2"></script>
 ```
 
 ## Usage
