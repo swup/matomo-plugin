@@ -7,26 +7,27 @@ import Plugin from '@swup/plugin';
 export default class SwupMatomoPlugin extends Plugin {
 	name = 'SwupMatomoPlugin';
 
+	requires = { swup: '>=4' };
+
 	/**
 	 * Add event handlers on mount
 	 */
 	mount() {
-		this.swup.on('contentReplaced', this.onContentReplaced);
+		this.swup.hooks.on('replaceContent', this.onReplaceContent);
 	}
 
 	/**
 	 * Remove event handlers on unmount
 	 */
 	unmount() {
-		this.swup.off('contentReplaced', this.onContentReplaced);
+		this.swup.hooks.off('replaceContent', this.onReplaceContent);
 	}
 
 	/**
 	 * Handles 'contentReplaced'
-	 * @param {(boolean|PopStateEvent)} popstate
 	 * @returns {void}
 	 */
-	onContentReplaced = (popstate) => {
+	onReplaceContent = () => {
 		this.trackPageView();
 	};
 
