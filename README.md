@@ -4,7 +4,7 @@ A [swup](https://swup.js.org) plugin for integrating [Matomo](https://matomo.org
 
 - Trigger pageview events after each page change
 - This event is not triggered on intial load, so the first page view must be triggered elsewhere
-- However, the page view event is by default triggered in [Javascripts tracking snippet](https://developer.matomo.org/guides/tracking-javascript-guide) used for embedding Matomo.
+- However, the page view event is by default triggered in the [Javascripts tracking snippet](https://developer.matomo.org/guides/tracking-javascript-guide) used for embedding Matomo
 
 Simplified code run by this plugin on the `pageView` hook:
 
