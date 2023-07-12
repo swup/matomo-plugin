@@ -13,28 +13,20 @@ export default class SwupMatomoPlugin extends Plugin {
 	 * Add event handlers on mount
 	 */
 	mount() {
-		this.swup.hooks.on('replaceContent', this.onReplaceContent);
+		this.swup.hooks.on('page:view', this.trackPageView);
 	}
 
 	/**
 	 * Remove event handlers on unmount
 	 */
 	unmount() {
-		this.swup.hooks.off('replaceContent', this.onReplaceContent);
+		this.swup.hooks.off('page:view', this.trackPageView);
 	}
-
-	/**
-	 * Handles 'contentReplaced'
-	 * @returns {void}
-	 */
-	onReplaceContent = () => {
-		this.trackPageView();
-	};
 
 	/**
 	 * Tracks a page view to matomo, if it is installed
 	 */
-	trackPageView() {
+	trackPageView = () => {
 		// Guard clause to detect if matomo is available
 		if (window._paq == null) {
 			this.swup.log('[@swup/matomo-plugin] 🚨 Matomo is not loaded');
@@ -49,5 +41,5 @@ export default class SwupMatomoPlugin extends Plugin {
 		_paq.push(['trackPageView']);
 
 		this.swup.log(`[@swup/matomo-plugin] ✅ PageView tracked for '${url}'`);
-	}
+	};
 }
