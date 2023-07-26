@@ -7,34 +7,17 @@ import Plugin from '@swup/plugin';
 export default class SwupMatomoPlugin extends Plugin {
 	name = 'SwupMatomoPlugin';
 
-	/**
-	 * Add event handlers on mount
-	 */
+	requires = { swup: '>=4' };
+
 	mount() {
-		this.swup.on('contentReplaced', this.onContentReplaced);
+		this.on('page:view', this.trackPageView);
 	}
-
-	/**
-	 * Remove event handlers on unmount
-	 */
-	unmount() {
-		this.swup.off('contentReplaced', this.onContentReplaced);
-	}
-
-	/**
-	 * Handles 'contentReplaced'
-	 * @param {(boolean|PopStateEvent)} popstate
-	 * @returns {void}
-	 */
-	onContentReplaced = (popstate) => {
-		this.trackPageView();
-	};
 
 	/**
 	 * Tracks a page view to matomo, if it is installed
 	 */
 	trackPageView() {
-		// Guard clause to detect if matomo is available
+		// Abort if matomo is not available
 		if (window._paq == null) {
 			this.swup.log('[@swup/matomo-plugin] 🚨 Matomo is not loaded');
 			return;
