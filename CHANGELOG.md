@@ -3,6 +3,7 @@
 ## [3.0.1] - 2023-10-07
 
 - Port to TypeScript
+- Use `@swup/cli` for bundling
 
 ## [3.0.0] - 2023-07-26
 
