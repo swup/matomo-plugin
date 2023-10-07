@@ -4,7 +4,7 @@ declare global {
 	interface Window {
 		_paq?: {
 			push?: (payload: any[]) => void;
-		}
+		};
 	}
 }
 
