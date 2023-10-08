@@ -1,9 +1,13 @@
 import Plugin from '@swup/plugin';
 
-/**
- * Class representing the Swup Matomo Plugin.
- * @extends Plugin
- */
+declare global {
+	interface Window {
+		_paq?: {
+			push?: (payload: any[]) => void;
+		};
+	}
+}
+
 export default class SwupMatomoPlugin extends Plugin {
 	name = 'SwupMatomoPlugin';
 
@@ -13,12 +17,10 @@ export default class SwupMatomoPlugin extends Plugin {
 		this.on('page:view', this.trackPageView);
 	}
 
-	/**
-	 * Tracks a page view to matomo, if it is installed
-	 */
+	/** Tracks a page view to matomo, if it is installed */
 	trackPageView() {
 		// Abort if matomo is not available
-		if (window._paq == null) {
+		if (typeof window._paq?.push !== 'function') {
 			this.swup.log('[@swup/matomo-plugin] 🚨 Matomo is not loaded');
 			return;
 		}
@@ -26,10 +28,10 @@ export default class SwupMatomoPlugin extends Plugin {
 		const title = document.title;
 		const url = window.location.pathname + window.location.search;
 
-		_paq.push(['setDocumentTitle', title]);
-		_paq.push(['setCustomUrl', url]);
-		_paq.push(['trackPageView']);
+		window._paq.push(['setDocumentTitle', title]);
+		window._paq.push(['setCustomUrl', url]);
+		window._paq.push(['trackPageView']);
 
-		this.swup.log(`[@swup/matomo-plugin] ✅ PageView tracked for '${url}'`);
+		this.swup.log(`[@swup/matomo-plugin] ✅ Visit tracked for '${url}'`);
 	}
 }

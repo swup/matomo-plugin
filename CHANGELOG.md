@@ -1,6 +1,9 @@
 # Changelog
 
-<!-- ## [Unreleased] -->
+## [3.0.1] - 2023-10-07
+
+- Port to TypeScript
+- Use `@swup/cli` for bundling
 
 ## [3.0.0] - 2023-07-26
 
@@ -19,8 +22,7 @@
 
 - Initial release
 
-[Unreleased]: https://github.com/swup/matomo-plugin/compare/3.0.0...HEAD
-
+[3.0.1]: https://github.com/swup/matomo-plugin/releases/tag/3.0.1
 [3.0.0]: https://github.com/swup/matomo-plugin/releases/tag/3.0.0
 [2.0.0]: https://github.com/swup/matomo-plugin/releases/tag/2.0.0
 [1.0.1]: https://github.com/swup/matomo-plugin/releases/tag/1.0.1
