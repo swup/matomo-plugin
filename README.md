@@ -29,7 +29,7 @@ import SwupMatomoPlugin from '@swup/matomo-plugin';
 Or include the minified production file from a CDN:
 
 ```html
-<script src="https://unpkg.com/@swup/matomo-plugin@2"></script>
+<script src="https://unpkg.com/@swup/matomo-plugin@3"></script>
 ```
 
 ## Usage
